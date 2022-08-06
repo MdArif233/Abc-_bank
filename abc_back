@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+class Bank {
+    private String accno;
+    private String name;
+    private long balance;
+    private String acctype;
+    Scanner sc = new Scanner(System.in);
+
+    public void CreateAccount() {
+
+        System.out.println("Enter the account no\n");
+        accno = sc.next();
+        System.out.println("Enter the account Holder Name\n");
+        name = sc.next();
+        System.out.println("Enter the account Account Balance\n");
+        balance = sc.nextLong();
+        System.out.println("Enter the account type\n");
+        acctype = sc.next();
+    }
+
+    public void showAccount() {
+
+        System.out.println("The account no is " + accno);
+        System.out.println("The account Holder name is " + name);
+        System.out.println("The account Balance  is " + balance);
+        System.out.println("The account type  is " + acctype);
+    }
+
+    public void Deposit() {
+
+        System.out.println("Enter the amount that you want to deposit \n");
+        int add_amount = sc.nextInt();
+        if(add_amount<0)
+        {
+            System.out.println("Sorry Amount can not be Negative..!!");
+        }
+        else {
+            balance += add_amount;
+            System.out.println("Your Updated balance after deposit " + balance);
+        }
+    }
+
+    public void withdraw() {
+
+        System.out.println("Enter the amount that you want to withdraw \n");
+        int withdraw_amount = sc.nextInt();
+        if(withdraw_amount<0)
+        {
+            System.out.println("Negative withdrawls are not allowed Try Again..!!");
+        }
+        if (balance > withdraw_amount) {
+            balance -= withdraw_amount;
+            System.out.println("The Updated balance after the withdrawal amount is " + balance);
+        } else {
+
+            System.out.println("The Balance is less than Withdrawl amoun !!!  Withdrawal Failed");
+        }
+    }
+
+    public boolean SearchAccount(String curr_account) {
+
+        if (accno.equals(curr_account)) {
+            System.out.println("This Account Already Exist \n");
+            showAccount();
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+class ABC {
+
+    public static void main(String[]args){
+
+        Scanner sc= new Scanner(System.in);
+
+        System.out.println("Enter the no of Accounts you want to create...\n");
+
+        int n = sc.nextInt();
+
+        Bank arr[]= new Bank[n];  //fixed size array creation
+
+       for(int i=0;i<arr.length;i++){
+
+           arr[i] = new Bank();   // the above class object is made out here
+           arr[i].CreateAccount();
+        }
+           System.out.println( " Display All Account Details \n Search By Account Number \nDeposit the amount \n Withdraw the amount \nExit");
+
+
+
+
+
+    }
+}
+
