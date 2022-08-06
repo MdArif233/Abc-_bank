@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Salary_Calculator
+{
+    public static void Calculate_Salary(int base_salary)
+    {
+        int Hra= (base_salary*10)/100;
+        System.out.println("HRA " + Hra);
+
+        int Da = (base_salary*10)/100;
+        System.out.println("DA " + Da);
+
+         int Gross_Salary = base_salary + Hra+ Da;
+         System.out.println("Gross Salary " + Gross_Salary);
+
+         int pf_deduction =( base_salary*10)/100;
+         System.out.println("PF " +pf_deduction);
+
+         int Net_Salary = Gross_Salary - pf_deduction;
+         System.out.println("Net Salary " +Net_Salary);
+
+         int annual_package = Net_Salary*12;
+
+         System.out.println("Annual Package " + annual_package);
+
+    }
+    public static void main(String[]args)
+    {
+        Scanner sc= new Scanner(System.in);
+          int basic_Salary;
+        System.out.println("Enter Your Basic Salary");
+        basic_Salary=sc.nextInt();
+        Calculate_Salary(basic_Salary);
+
+    }
+}
